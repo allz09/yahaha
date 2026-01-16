@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-black">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Perpustakaan</title>
+
+  
+  @vite(['resources/css/app.css','resources/js/app.js'])
+
+  <style>
+    .fade-in-up { transform: translateY(8px); opacity: 0; animation: fadeUp .45s ease forwards; }
+    @keyframes fadeUp { to { transform: translateY(0); opacity: 1; } }
+  </style>
+</head>
+
+<body
+  class="m-0 min-h-screen overflow-hidden text-gray-900 dark:text-gray-100 transition-colors
+         bg-cover bg-center bg-no-repeat"
+  style="background-image: url('');">
+
+
+
+<div class="min-h-screen w-screen flex items-center justify-center px-4
+            bg-black/60 backdrop-blur-md">
+
+  <div class="w-full max-w-md">
+
+    <div class="flex justify-center mb-6">
+      <img src="" alt="Logo"
+           class="w-20 h-20 object-cover rounded-full shadow-md">
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-8 rounded-2xl shadow-xl fade-in-up">
+
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-2xl font-semibold">Masuk ke Perpustakaan</h1>
+          <p class="text-sm text-gray-500">Masukkan email & password akunmu</p>
+        </div>
+
+        <button id="themeToggle" class="ml-4 p-2 rounded-md bg-gray-100 dark:bg-gray-700">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+
+      
+      <form method="POST" action="" class="space-y-4" novalidate id="loginForm">
+        @csrf
+
+        
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input type="email" name="email" id="email"
+            value=""
+            class="w-full rounded-xl px-4 py-3 border bg-gray-50 dark:bg-gray-700"
+            placeholder="email@example.com">
+
+        
+          @error('email')
+            <p class="text-xs text-red-500 mt-1">
+              Please enter a valid<br>email address.
+            </p>
+          @enderror
+        </div>
+
+        
+        <div>
+          <label class="block text-sm font-medium mb-1">Password</label>
+          <div class="relative">
+            <input type="password" name="password" id="password"
+              class="w-full rounded-xl px-4 py-3 border bg-gray-50 dark:bg-gray-700"
+              placeholder="••••••••">
+
+            <button type="button" id="togglePass"
+              class="absolute right-2 top-2 text-sm text-gray-500">lihat</button>
+          </div>
+
+          <p id="passwordError" class="text-xs text-red-500 mt-1 hidden">
+            This field is required
+          </p>
+
+          @error('password')
+            <p class="text-xs text-red-500 mt-1">
+              This field is required
+            </p>
+          @enderror
+        </div>
+
+        
+        @if ($errors->has('login'))
+          <div class="p-2 rounded-md bg-red-50 border border-red-200 text-red-600 text-sm">
+            Login Gagal
+          </div>
+        @endif
+
+        <div class="flex items-center text-sm">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" name="remember">
+            Ingat saya
+          </label>
+        </div>
+
+        <button type="submit"
+          class="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold">
+          Masuk
+        </button>
+
+       
+      </form>
+    </div>
+
+    <p class="text-center text-xs text-gray-400 mt-4">
+      ©  Perpustakaan
+    </p>
+  </div>
+</div>
+
+<script>
+  // THEME
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+  });
+
+  // SHOW PASSWORD
+  document.getElementById('togglePass').addEventListener('click', () => {
+    const p = document.getElementById('password');
+    p.type = p.type === 'password' ? 'text' : 'password';
+  });
+
+  // VALIDATION
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    let valid = true;
+
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+
+    emailError.classList.add('hidden');
+    passwordError.classList.add('hidden');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email.value || !emailRegex.test(email.value)) {
+      emailError.classList.remove('hidden');
+      valid = false;
+    }
+
+    if (!password.value) {
+      passwordError.classList.remove('hidden');
+      valid = false;
+    }
+
+    if (!valid) e.preventDefault();
+  });
+</script>
+
+</body>
+</html>
