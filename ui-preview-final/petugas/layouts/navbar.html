@@ -1,0 +1,18 @@
+<div class="flex justify-between items-center bg-[#1d1d22] rounded-xl p-4 shadow">
+
+    <h2 class="text-xl font-semibold tracking-wide">
+        @yield('title', 'Dashboard')
+    </h2>
+
+    <div class="flex items-center gap-4">
+       <span class="text-gray-300"> 👋 </span>
+
+        <form action="" method="POST">
+            @csrf
+            <button
+                class="px-4 py-2 bg-red-500/20 text-red-400 rounded-xl hover:bg-red-500/30 transition">
+                Logout
+            </button>
+        </form>
+    </div>
+</div>

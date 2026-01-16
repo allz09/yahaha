@@ -1,0 +1,51 @@
+
+
+
+<div class="p-6 max-w-xl mx-auto">
+
+<div class="flex items-center justify-between mb-4">
+         <a href=""
+            class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg">
+            ← Kembali
+        </a>
+    </div>
+    
+    <h2 class="text-xl font-bold mb-4 text-white">Edit User</h2>
+
+    <form action="" method="POST" enctype="multipart/form-data"
+        class="bg-gray-800 p-5 rounded-xl text-gray-300">
+        @csrf @method('PUT')
+
+        <label>Nama</label>
+        <input type="text" name="nama" value="" class="w-full p-2 rounded bg-gray-700 text-white mb-3">
+
+        <label>Email</label>
+        <input type="email" name="email" value="" class="w-full p-2 rounded bg-gray-700 text-white mb-3">
+
+        <label>Password (opsional)</label>
+        <input type="password" name="password" class="w-full p-2 rounded bg-gray-700 text-white mb-3">
+
+        <label>No HP</label>
+        <input type="text" name="no_hp" value="" class="w-full p-2 rounded bg-gray-700 text-white mb-3">
+
+        <label>Alamat</label>
+        <textarea name="alamat" class="w-full p-2 rounded bg-gray-700 text-white mb-3"></textarea>
+
+        <label>Role</label>
+        <select name="role" class="w-full p-2 rounded bg-gray-700 text-white mb-3">
+            <option value="admin"   >Admin</option>
+            <option value="petugas" >Petugas</option>
+            <option value="anggota" >Anggota</option>
+        </select>
+
+        <label>Foto</label>
+        <input type="file" name="foto" class="w-full text-white mb-4">
+
+        @if ($user->foto)
+            <img src="" class="w-20 h-20 rounded-full object-cover mb-3">
+        @endif
+
+        <button class="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded mt-2">Update</button>
+    </form>
+</div>
+

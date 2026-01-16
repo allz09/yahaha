@@ -1,0 +1,103 @@
+
+
+
+
+
+<h1 class="text-2xl font-bold mb-6">📚 Daftar Buku</h1>
+
+@if(session('success'))
+    <div class="mb-4 p-4 rounded bg-emerald-600 text-white">
+        
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="mb-4 p-4 rounded bg-red-600 text-white">
+        
+    </div>
+@endif
+
+<form method="GET" class="mb-6">
+    <input type="text" name="search"
+        value=""
+        placeholder="Cari judul / penerbit..."
+        class="w-full md:w-1/3 px-4 py-2 rounded bg-[#1f1f24] border border-gray-700">
+</form>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+@forelse($books as $buku)
+    <div class="bg-[#1f1f24] rounded-xl border border-gray-700 shadow">
+        <img src=""
+             class="h-48 w-full object-cover rounded-t-xl">
+
+        <div class="p-4 space-y-1">
+            <h3 class="font-semibold truncate"></h3>
+            <p class="text-sm text-gray-400">Penerbit: </p>
+            <p class="text-sm text-gray-400">Tahun: </p>
+            <p class="text-sm">Stok:
+                <span class="">
+                    
+                </span>
+            </p>
+
+            <button
+                onclick="openModal('', '')"
+                class="mt-3 w-full py-2 rounded 
+                "
+                >
+                Ajukan Peminjaman
+            </button>
+        </div>
+    </div>
+@empty
+    <p class="col-span-4 text-gray-400">Belum ada buku.</p>
+@endforelse
+</div>
+
+
+<div id="pinjamModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50">
+    <div class="bg-[#1f1f24] rounded-xl w-full max-w-md p-6 border border-gray-700">
+        <h3 class="text-xl font-bold mb-2">📖 Konfirmasi Peminjaman</h3>
+
+        <p class="text-gray-400 mb-4">
+            Buku: <span id="modalJudul" class="text-white font-semibold"></span>
+        </p>
+
+        <form id="modalForm" method="POST">
+            @csrf
+
+            <label class="text-sm text-gray-300">Lama pinjam</label>
+            <select name="hari" required
+                class="w-full mt-2 mb-4 bg-[#2a2a30] border border-gray-700 rounded-lg px-3 py-2">
+                <option value="">-- Pilih lama pinjam --</option>
+                <option value="3">3 Hari</option>
+                <option value="7">7 Hari</option>
+                <option value="14">14 Hari</option>
+            </select>
+
+            <div class="flex justify-end gap-3">
+                <button type="button" onclick="closeModal()"
+                    class="px-4 py-2 rounded-lg bg-gray-600">Batal</button>
+
+                <button type="submit"
+                    class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700">
+                    Kirim Pengajuan
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function openModal(action, judul) {
+    document.getElementById('modalForm').action = action;
+    document.getElementById('modalJudul').innerText = judul;
+    document.getElementById('pinjamModal').classList.remove('hidden');
+    document.getElementById('pinjamModal').classList.add('flex');
+}
+
+function closeModal() {
+    document.getElementById('pinjamModal').classList.add('hidden');
+}
+</script>
+

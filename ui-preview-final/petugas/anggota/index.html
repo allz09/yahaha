@@ -1,0 +1,123 @@
+
+
+
+
+
+
+<h2 class="text-2xl font-bold text-white mb-4">Kelola Anggota</h2>
+
+
+<form method="GET" class="flex gap-3 mb-6">
+    <select name="status_buku" class="bg-gray-800 text-white p-2 rounded">
+        <option value="">Semua Status Buku</option>
+        <option value="normal">Normal</option>
+        <option value="telat">Telat</option>
+        <option value="rusak">Rusak</option>
+        <option value="belum">Belum Kembali</option>
+    </select>
+
+    <select name="status_user" class="bg-gray-800 text-white p-2 rounded">
+        <option value="">Semua User</option>
+        <option value="aktif">Aktif</option>
+        <option value="nonaktif">Nonaktif</option>
+    </select>
+
+    <button class="bg-indigo-600 px-4 rounded text-white">
+        Filter
+    </button>
+</form>
+
+<div class="bg-[#1f1f24] rounded-xl p-4 overflow-x-auto">
+<table class="w-full text-white text-sm">
+<thead class="text-gray-400">
+<tr>
+    <th class="text-left p-3">User</th>
+    <th class="text-center p-3">Status</th>
+    <th class="text-left p-3">Buku</th>
+    <th class="text-center p-3">Tgl Pinjam</th>
+    <th class="text-center p-3">Tgl Kembali</th>
+    <th class="text-center p-3">Status Buku</th>
+    <th class="text-center p-3">Denda</th>
+    <th class="text-center p-3">Aksi</th>
+</tr>
+</thead>
+
+<tbody class="divide-y divide-gray-700">
+@foreach($users as $u)
+<tr class="hover:bg-[#2a2a30]">
+
+    
+    <td class="p-3">
+        <div class="flex items-center gap-3">
+            <img src="" class="w-10 h-10 rounded-full object-cover">
+            <span></span>
+        </div>
+    </td>
+
+    
+    <td class="p-3 text-center">
+        <span class="px-2 py-1 rounded text-xs
+        ">
+            
+        </span>
+    </td>
+
+    
+    <td class="p-3">
+        <div class="flex items-center gap-2">
+            <img src="" class="w-10 rounded">
+            <span></span>
+        </div>
+    </td>
+
+    <td class="p-3 text-center"></td>
+    <td class="p-3 text-center"></td>
+
+    
+    <td class="p-3 text-center">
+        <span class="px-2 py-1 rounded text-xs
+        @if($u->status_buku=='normal') bg-green-600
+        @elseif($u->status_buku=='telat') bg-red-600
+        @elseif($u->status_buku=='rusak') bg-yellow-500
+        @else bg-gray-600 @endif">
+            
+        </span>
+    </td>
+
+    
+    <td class="p-3 text-center">
+        Rp 
+    </td>
+
+    
+    <td class="p-3 text-center">
+        <div class="flex justify-center gap-2">
+
+            <form action=""
+                  method="POST">
+                @csrf
+                @method('PUT')
+                <button class="px-3 py-1 text-xs rounded
+                {{ $u->status === 'aktif'
+                    ? 'bg-red-600 hover:bg-red-700'
+                    : 'bg-green-600 hover:bg-green-700' }}
+                text-white">
+                    
+                </button>
+            </form>
+
+            <a href=""
+               class="px-3 py-1 bg-indigo-600 rounded text-xs">
+                Detail
+            </a>
+
+        </div>
+    </td>
+
+</tr>
+@endforeach
+</tbody>
+</table>
+</div>
+
+

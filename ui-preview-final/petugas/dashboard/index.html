@@ -1,0 +1,107 @@
+
+
+
+
+
+
+
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">
+        Dashboard Petugas
+    </h1>
+    <p class="text-gray-500 mt-1">
+        Selamat datang kembali,  👋
+    </p>
+</div>
+
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+    <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg">
+        <p class="text-sm opacity-80">Total Buku</p>
+        <h2 class="text-4xl font-extrabold mt-2"></h2>
+    </div>
+
+    <div class="p-6 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg">
+        <p class="text-sm opacity-80">Total Peminjaman</p>
+        <h2 class="text-4xl font-extrabold mt-2"></h2>
+    </div>
+
+    <div class="p-6 rounded-2xl bg-gradient-to-br from-pink-500 to-fuchsia-600 text-white shadow-lg">
+        <p class="text-sm opacity-80">Sedang Dipinjam</p>
+        <h2 class="text-4xl font-extrabold mt-2"></h2>
+    </div>
+
+</div>
+
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    
+    <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+        <h3 class="text-lg font-semibold mb-5 text-gray-800 dark:text-white">
+            📌 Aktivitas Terbaru
+        </h3>
+
+        <ul class="space-y-4">
+            @forelse($recentActivity as $item)
+                <li class="flex items-start justify-between">
+                    <div>
+                        <p class="font-medium text-gray-800 dark:text-gray-100">
+                            
+                            <span class="text-gray-500">meminjam</span>
+                            <span class="font-semibold">
+                                
+                            </span>
+                        </p>
+                        <span class="text-xs text-gray-400">
+                            
+                        </span>
+                    </div>
+                </li>
+            @empty
+                <li class="text-gray-400 text-sm">
+                    Belum ada aktivitas terbaru
+                </li>
+            @endforelse
+        </ul>
+    </div>
+
+    
+    <div class="space-y-6">
+
+        
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm flex items-center gap-4">
+            <img src=""
+                 class="w-16 h-16 rounded-full object-cover border">
+
+            <div>
+                <h2 class="font-semibold text-lg text-gray-800 dark:text-white">
+                    
+                </h2>
+                <p class="text-sm text-gray-500">
+                    Petugas Perpustakaan
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="p-5 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 text-white shadow-lg">
+            <p class="text-sm opacity-80">Peminjaman Hari Ini</p>
+            <h2 class="text-3xl font-bold mt-1">
+                
+            </h2>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-lg">
+            <p class="text-sm opacity-80">Pengembalian Hari Ini</p>
+            <h2 class="text-3xl font-bold mt-1">
+                
+            </h2>
+        </div>
+
+    </div>
+
+</div>
+
+

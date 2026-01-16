@@ -1,0 +1,87 @@
+
+
+
+
+
+<div class="p-6">
+
+    
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-semibold text-gray-100">➕ Tambah Buku</h1>
+
+        <a href=""
+           class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg shadow transition">
+            ← Kembali
+        </a>
+    </div>
+
+    
+    <div class="bg-gray-800/60 border border-gray-700 p-6 rounded-xl shadow-xl max-w-2xl">
+
+        @if ($errors->any())
+            <div class="mb-4 p-3 bg-red-600/20 border border-red-600 text-red-300 rounded-lg">
+                <strong>Ada kesalahan input:</strong>
+                <ul class="mt-2 list-disc list-inside text-red-300 text-sm">
+                    @foreach ($errors->all() as $error)
+                        <li></li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            @csrf
+
+            
+            <div class="mb-4">
+                <label class="text-gray-300 text-sm">Judul Buku</label>
+                <input type="text" name="judul"
+                       class="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100"
+                       placeholder="Nama buku..."
+                       value="" required>
+            </div>
+
+            
+            <div class="mb-4">
+                <label class="text-gray-300 text-sm">Penerbit</label>
+                <input type="text" name="penerbit"
+                       class="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100"
+                       placeholder="Nama penerbit..."
+                       value="">
+            </div>
+
+            
+            <div class="mb-4">
+                <label class="text-gray-300 text-sm">Tahun Terbit</label>
+                <input type="number" name="tahun_terbit"
+                       class="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100"
+                       placeholder="contoh: 2020"
+                       value="">
+            </div>
+
+            
+            <div class="mb-4">
+                <label class="text-gray-300 text-sm">Stok Buku</label>
+                <input type="number" name="stok"
+                       class="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100"
+                       placeholder="jumlah stok..."
+                       value="" required>
+            </div>
+
+            
+            <div class="mb-6">
+                <label class="text-gray-300 text-sm">Cover Buku</label>
+                <input type="file" name="cover"
+                       class="w-full mt-2 text-gray-200 bg-gray-700 border border-gray-600 rounded-lg p-2 cursor-pointer">
+                <p class="text-xs text-gray-400 mt-1">* Format jpg, jpeg, png — Max 2MB</p>
+            </div>
+
+            <button type="submit"
+                class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-md transition w-full">
+                Simpan Buku
+            </button>
+
+        </form>
+    </div>
+</div>
+

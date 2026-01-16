@@ -1,0 +1,78 @@
+
+
+
+
+
+<div class="p-6">
+
+    <h1 class="text-2xl font-bold mb-6">📦 Data Pengembalian</h1>
+
+    @if(session('success'))
+        <div class="mb-4 p-3 rounded bg-emerald-600 text-white">
+            
+        </div>
+    @endif
+
+    <div class="overflow-x-auto bg-[#1f1f24] rounded-xl border border-gray-700">
+        <table class="w-full text-sm text-gray-300">
+            <thead class="bg-[#2a2a30] text-gray-400">
+                <tr>
+                    <th class="p-4 text-left">Buku</th>
+                    <th class="p-4 text-left">Anggota</th>
+                    <th class="p-4 text-center">Tgl Pinjam</th>
+                    <th class="p-4 text-center">Status</th>
+                    <th class="p-4 text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-700">
+                @forelse($data as $item)
+                <tr class="hover:bg-[#26262c]">
+
+                    
+                    <td class="p-4 flex gap-3 items-center">
+                        <img src=""
+                             class="w-12 h-16 object-cover rounded">
+                        <span></span>
+                    </td>
+
+                    
+                    <td class="p-4">
+                        
+                    </td>
+
+                    
+                    <td class="p-4 text-center">
+                        {{ $item->peminjaman->tgl_pinjam
+                            ? \Carbon\Carbon::parse($item->peminjaman->tgl_pinjam)->format('d M Y')
+                            : '-' }}
+                    </td>
+
+                    
+                    <td class="p-4 text-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-yellow-600">
+                            Menunggu Konfirmasi
+                        </span>
+                    </td>
+
+                    
+                    <td class="p-4 text-center">
+                        <a href=""
+                           class="px-4 py-1 rounded bg-indigo-600 hover:bg-indigo-700 text-xs">
+                            Proses
+                        </a>
+                    </td>
+
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="p-6 text-center text-gray-500">
+                        Tidak ada pengembalian menunggu konfirmasi
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

@@ -1,0 +1,117 @@
+
+
+
+
+@if(session('success'))
+<div class="mb-6 p-4 rounded-xl bg-green-600/90 text-white">
+    
+</div>
+@endif
+
+<div class="max-w-6xl mx-auto space-y-6">
+
+    
+    <div class="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600
+                rounded-3xl p-8 shadow-xl overflow-hidden">
+
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <div class="relative flex flex-col md:flex-row items-center gap-8 text-white">
+            <img
+                src=""
+                class="w-36 h-36 rounded-full object-cover border-4 border-white shadow-2xl">
+
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl md:text-4xl font-extrabold">
+                    
+                </h1>
+                <p class="text-white/80 mt-1"></p>
+
+                <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-4">
+                    <span class="px-4 py-1 rounded-full text-xs font-bold uppercase
+                        bg-white/20">
+                        
+                    </span>
+
+                    <span class="px-4 py-1 rounded-full text-xs font-bold
+                        {{ $user->status === 'aktif'
+                            ? 'bg-green-500/20 text-green-200'
+                            : 'bg-red-500/20 text-red-200' }}">
+                        
+                    </span>
+
+                    <span class="px-4 py-1 rounded-full text-xs
+                        bg-white/20">
+                        Bergabung 
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        
+        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="bg-[#1f1f24] p-6 rounded-2xl border border-gray-700">
+                <p class="text-gray-400 text-sm">Nama Lengkap</p>
+                <p class="text-white text-lg font-semibold">
+                    
+                </p>
+            </div>
+
+            <div class="bg-[#1f1f24] p-6 rounded-2xl border border-gray-700">
+                <p class="text-gray-400 text-sm">Username</p>
+                <p class="text-white text-lg font-semibold">
+                    
+                </p>
+            </div>
+
+            <div class="bg-[#1f1f24] p-6 rounded-2xl border border-gray-700">
+                <p class="text-gray-400 text-sm">Email</p>
+                <p class="text-white text-lg font-semibold">
+                    
+                </p>
+            </div>
+
+            <div class="bg-[#1f1f24] p-6 rounded-2xl border border-gray-700">
+                <p class="text-gray-400 text-sm">Alamat</p>
+                <p class="text-white text-lg">
+                    
+                </p>
+            </div>
+
+        </div>
+
+        
+        <div class="bg-[#1f1f24] border border-gray-700
+                    rounded-2xl p-6 flex flex-col justify-between">
+
+            <div>
+                <h3 class="text-white text-lg font-bold mb-4">
+                    Pengaturan Akun
+                </h3>
+
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li>• Data pribadi petugas</li>
+                    <li>• Informasi akun & akses</li>
+                    <li>• Keamanan password</li>
+                </ul>
+            </div>
+
+            <a href=""
+               class="mt-6 inline-flex items-center justify-center gap-2
+                      px-6 py-3 rounded-xl
+                      bg-gradient-to-r from-indigo-600 to-purple-600
+                      text-white font-semibold shadow-lg
+                      hover:scale-[1.02] transition">
+                ✏️ Edit Profil
+            </a>
+        </div>
+
+    </div>
+</div>
+
+

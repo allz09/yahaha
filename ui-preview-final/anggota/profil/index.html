@@ -1,0 +1,95 @@
+
+
+
+
+
+<div class="max-w-6xl mx-auto px-6 py-10">
+
+    
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+        <div>
+            <h1 class="text-3xl font-extrabold text-white">
+                👤 Profil Saya
+            </h1>
+            <p class="text-gray-400">
+                Informasi akun dan data pribadi anggota
+            </p>
+        </div>
+
+        <a href=""
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl
+                  bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition">
+            ✏️ Edit Profil
+        </a>
+    </div>
+
+    
+    <div class="bg-[#1f1f24] border border-gray-700 rounded-3xl p-8 shadow-xl">
+
+        
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+
+            <div class="relative">
+                <img
+                    src="{{ Auth::user()->foto
+                        ? asset(Auth::user()->foto)
+                        : asset('images/default-user.png') }}"
+                    class="w-36 h-36 rounded-full object-cover border-4 border-indigo-600 shadow-lg"
+                    alt="Foto Profil">
+
+                <span class="absolute bottom-2 right-2 w-4 h-4 rounded-full
+                    ">
+                </span>
+            </div>
+
+            <div class="text-center md:text-left">
+                <h2 class="text-3xl font-bold text-white">
+                    
+                </h2>
+                <p class="text-gray-400 mt-1">
+                    @
+                </p>
+
+                <span class="inline-block mt-4 px-4 py-1 text-sm rounded-full
+                    {{ Auth::user()->status === 'aktif'
+                        ? 'bg-green-500/20 text-green-400'
+                        : 'bg-red-500/20 text-red-400' }}">
+                    
+                </span>
+            </div>
+        </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            @php
+                $items = [
+                    ['📛 Nama Lengkap', Auth::user()->name],
+                    ['👤 Username', Auth::user()->username],
+                    ['📧 Email', Auth::user()->email],
+                    ['📞 No. Telepon', Auth::user()->no_telp ?? '-'],
+                    ['🏠 Alamat', Auth::user()->alamat ?? '-'],
+                    ['🎭 Role', ucfirst(Auth::user()->role)],
+                ];
+            @endphp
+
+            @foreach($items as [$label, $value])
+                <div class="bg-[#111827] border border-gray-700 rounded-xl p-5">
+                    <p class="text-gray-400 text-sm mb-1"></p>
+                    <p class="text-white font-semibold break-words">
+                        
+                    </p>
+                </div>
+            @endforeach
+
+            <div class="bg-[#111827] border border-gray-700 rounded-xl p-5 md:col-span-2">
+                <p class="text-gray-400 text-sm mb-1">📅 Tanggal Bergabung</p>
+                <p class="text-white font-semibold">
+                    
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+

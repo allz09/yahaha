@@ -1,0 +1,75 @@
+
+
+
+
+
+<h1 class="text-2xl font-bold mb-6">📑 Riwayat Peminjaman</h1>
+
+<div class="overflow-x-auto">
+<table class="w-full border border-gray-700 rounded-xl overflow-hidden">
+    <thead class="bg-[#1f1f24]">
+        <tr class="text-left text-sm text-gray-400">
+            <th class="p-3">Buku</th>
+            <th class="p-3">Tanggal Pinjam</th>
+            <th class="p-3">Jatuh Tempo</th>
+            <th class="p-3">Status</th>
+        </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-700">
+    @forelse($peminjaman as $item)
+        <tr class="hover:bg-[#1f1f24]">
+            <td class="p-3 flex gap-3 items-center">
+                <img src=""
+                     class="w-12 h-16 object-cover rounded">
+                <span></span>
+            </td>
+
+            
+            <td class="p-3 text-sm text-gray-300">
+                @if($item->tgl_pinjam)
+                    
+                @else
+                    <span class="text-gray-500 italic">menunggu konfirmasi</span>
+                @endif
+            </td>
+
+            
+            <td class="p-3 text-sm text-gray-300">
+                @if($item->tgl_kembali)
+                    
+                @else
+                    <span class="text-gray-500 italic">menunggu konfirmasi</span>
+                @endif
+            </td>
+
+            
+            <td class="p-3">
+                @if($item->status == 'menunggu')
+                    <span class="px-3 py-1 rounded-full bg-gray-600 text-sm">
+                        Menunggu
+                    </span>
+
+                @elseif($item->status == 'dipinjam')
+                    <span class="px-3 py-1 rounded-full bg-yellow-600 text-sm">
+                        Dipinjam
+                    </span>
+
+                @elseif($item->status == 'dikembalikan')
+                    <span class="px-3 py-1 rounded-full bg-emerald-600 text-sm">
+                        Dikembalikan
+                    </span>
+                @endif
+            </td>
+        </tr>
+    @empty
+        <tr>
+            <td colspan="4" class="p-6 text-center text-gray-400">
+                Belum ada riwayat peminjaman 📭
+            </td>
+        </tr>
+    @endforelse
+    </tbody>
+</table>
+</div>
+
